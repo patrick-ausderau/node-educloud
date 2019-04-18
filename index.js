@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 // get the client
 const mysql = require('mysql2');
 
-console.log('Alive we ride');
 // create the connection to database
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -14,6 +13,8 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
 });
+
+console.log('Alive we ride');
 
 app.get('/', (req, res) => {
   console.log('asychronous problem?');
