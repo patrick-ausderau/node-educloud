@@ -1,14 +1,29 @@
 'use strict';
-
-console.log('hello world');
-
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-//app.use('bodyParser.urlencoded');
+// get the client
+const mysql = require('mysql2');
+
+// create the connection to database
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+});
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+  // simple query
+  connection.query(
+    'SELECT * FROM animals ORDER BY name',
+    (err, results, fields) => {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results
+      res.send(results);
+    }
+  );
 });
 app.post('/',
   bodyParser.urlencoded({extended:true}),
