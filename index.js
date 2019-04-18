@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 // get the client
 const mysql = require('mysql2');
 
+console.log('Alive we ride');
 // create the connection to database
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -15,6 +16,7 @@ const connection = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
+  console.log('asychronous problem?');
   // simple query
   connection.query(
     'SELECT * FROM animals ORDER BY name',
