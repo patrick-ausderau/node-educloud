@@ -16,6 +16,10 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
+connection.connect(err => {
+  console.log(err);
+});
+
 console.log('Alive we ride');
 
 const sslkey  = fs.readFileSync('/etc/pki/tls/private/ca.key');
