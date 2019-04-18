@@ -16,7 +16,8 @@ const options = {
 };
 
 app.get('/', (req, res) => {
-  res.send('Hello');
+  if (req.secure) res.send('https :)');
+  else res.send('hello not secure?');
 });
 app.post('/',
   bodyParser.urlencoded({extended:true}),
