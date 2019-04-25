@@ -17,9 +17,14 @@ const connection = mysql.createConnection({
   socketPath: '/var/lib/mysql/mysql.sock'
 });
 
-connection.connect(err => {
-  console.log(err);
-});
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    if(username != 'tester' && password != 'test123') {
+       return done(null, false);
+    }
+    return done(null, user);
+  }
+));
 
 console.log('Alive we ride');
 
