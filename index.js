@@ -7,12 +7,22 @@ const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const saltRounds = 12;
 
+/*
+const myPlaintextPassword = 'secret ;)';
+//app.post('/register',....
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+  // Store hash in your password DB.
+  console.log(hash);
+});
+*/
 passport.use(new Strategy(
   (username, password, done) => {
     console.log(`login? ${username}`);
     //Normally, select * from users where username=?
-    if(username != process.env.USR && password != process.env.PWD) {
+    if(username != process.env.USR && bcrypt.compareSync(password, process.env.PWD)) {
       console.log('login failed');
        return done(null, false);
     }
