@@ -10,7 +10,7 @@ const Strategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 
-/*
+/* Normally, password comes from html registration form (in post method). Make sure it uses HTTPS (S is important)
 const myPlaintextPassword = 'secret ;)';
 //app.post('/register',....
 bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
