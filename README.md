@@ -14,6 +14,8 @@ PWD=
 KEY=
 CERT=
 SEC=
+HTTP_PORT=
+HTTPS_PORT=
 ```
 
 * DB_* connect the databse. 

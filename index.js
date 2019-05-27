@@ -76,5 +76,5 @@ app.get('/test', (req, res) => {
   res.send(`Hello ${req.query.name}!`);
 });
 
-app.listen(3000); //normal http traffic
-https.createServer(options, app).listen(8000); //https traffic
+app.listen(process.env.HTTP_PORT); //normal http traffic
+https.createServer(options, app).listen(process.env.HTTPS_PORT); //https traffic
